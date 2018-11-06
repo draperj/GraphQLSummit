@@ -166,7 +166,8 @@ Schema
 			      students: Int!
 			}
 
-
+### Query and Mutation
+There is no actualy difference between Query or Mutation for GraphQL, they are just organisation structures
 
 
 
