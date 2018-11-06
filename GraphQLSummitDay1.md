@@ -169,6 +169,15 @@ Schema
 ### Query and Mutation
 There is no actualy difference between Query or Mutation for GraphQL, they are just organisation structures
 
+### GraphQL VS Rest
+Network layer remains very similiar, as these are still HTTP calls
+Ex CURL to GraphQL Server
+
+			curl -X POST \
+				-H "Content-Type: application/json" \
+				--data '{ "query": "{allLifts{name}}" }' \
+				http://localhost:4000/graphql
+
 
 
 

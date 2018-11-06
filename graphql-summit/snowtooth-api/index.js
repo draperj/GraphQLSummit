@@ -127,6 +127,8 @@ const resolvers = {
         }
     },
     Lift: {
+        // Root being the parent Lift, where root.trails can be used against main trails object to filter IDs for selection
+        // The third argument is context
         trailAccess: (root, args, { trails }) => root.trails
             .map(id => trails.find(t => id === t.id))
             .filter(x => x)
