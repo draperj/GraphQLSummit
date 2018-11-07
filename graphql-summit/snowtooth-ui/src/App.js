@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
 
@@ -18,7 +18,7 @@ const App = () => (
       if (loading) return <p>Loading...</p>
 
       return <div>
-        {!loading && data.allLifts.map(lift => <h3 key={lift.id}> {lift.name} </h3>)} </div>
+        {data.allLifts.map(lift => <h3 key={lift.id}> {lift.name} </h3>)} </div>
     }}
   </Query>
 )
