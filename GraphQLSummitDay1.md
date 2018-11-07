@@ -173,10 +173,7 @@ There is no actualy difference between Query or Mutation for GraphQL, they are j
 Network layer remains very similiar, as these are still HTTP calls
 Ex CURL to GraphQL Server
 
-			curl -X POST \
-				-H "Content-Type: application/json" \
-				--data '{ "query": "{allLifts{name}}" }' \
-				http://localhost:4000/graphql
+	curl -X POST \ -H "Content-Type: application/json" \ --data '{ "query": "{allLifts{name}}" }' \ http://localhost:4000/graphql
 
 
 
@@ -185,3 +182,4 @@ Ex CURL to GraphQL Server
 * Prisma or Apollo Code Gen to generate code for schema
 * Reach out to Apollo again due to Sales transition (James will be in NYC next week Weds to Fri)
 * Michael Sharer - Walmart, Project Franklin
+* <https://astexplorer.net/>
