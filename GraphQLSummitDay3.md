@@ -72,6 +72,7 @@ ___
 ___
 
 * No inherent caching for GraphQL due to calls being done via HTTP POST requests
+* Caching needs to be done on the client
 * Queries that are subsets of previous queries are very fast if already cached as data is already on the client
 * GraphQL client caching should cover what REST caching does, but more 
 * When mocking and working with client caching, more beneficial to have a static dataset than a dynamicly generated mock

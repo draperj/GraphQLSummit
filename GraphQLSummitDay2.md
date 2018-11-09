@@ -14,7 +14,7 @@ ___
 * Apollo provides change management around schema changes, that can be integrated into CI/CD
 * Best practices:
     * Integrity - One Graph of all your data (Data Schema defined for all data in a single source)
-    * Integrity - Federated Implementation
+    * Integrity - Federated Implementation (centrally defined)
     * Integrity - Track the Schema in a registy (i.e. track via version controlling)
     * Agility - Abstract Schema, Oriented Around Product Needs (Frontend defined backend), build pieces of schema only when it is needed
     * Agility - Use an Agile Approach to Schema Development
@@ -30,7 +30,7 @@ Apollo Platform
 * Apollo server (nodejs backend)
 * Apollo CLI, IDE plugins, Chrome Devtools
 * Schema Registry, allows tracking of changes to schema
-* Client registry, Operation registry, Trace warehouse (structured logging)
+* Client registry (auth?), Operation registry (access control), Trace warehouse (structured logging)
 * Data graph access control
 * Schema change control
 * GraphQL gateway and query execution engine, allows distributing load over many microservices
@@ -74,7 +74,7 @@ ___
 ---
 * 1 API for multiple clients
 * Frontend iterations without backend changes (if the backend is structured with the right data schema at the start)
-* Easy to onboard engieers to using GraphQL as all data available from the API is very explicit and easy to explore
+* Easy to onboard engineers to using GraphQL as all data available from the API is very explicit and easy to explore
 * Ecosystem to support GraphQL is great (Apollo, Prisma)
 * Scaling efficiently: get only what you need (small payloads), get everything you need (avoid roundtrips to API), unifies services+microservices+third party services
 * Stability
@@ -87,8 +87,8 @@ ___
     * query complexity
     * rate limiting, caching
 * Current state after implementing GraphQL
-    *doubled users and improved performance
-    *minimized downtime
+    * doubled users and improved performance
+    * minimized downtime
     * devs can now focus on more front-end app based features rather than writing backends
 * Novvum helped create their GraphQL backend
 
@@ -118,7 +118,7 @@ ___
 ---
 * 200+ engineers work w/ GraphQL
 * Public and Internal Schema + Enterprise
-* Graphql is atype system to express posibilities
+* Graphql is a type system to express posibilities
 * Declarative for clients
 * Best way to mititgate breakines changes we dont know about yet
 * Build APIs that are easier to reason about (easier to use)
@@ -168,7 +168,7 @@ Guiding Principles of Schema Design
     * subject to rapid course correction
 * API design should support the app to change as much as it is needed
     * easy to add, hard to change or remove
-    * design choises stick around
+    * design choices stick around
     * strive for magic balance of not over-engineering but not oversimplifying
     * OR dont paint yourself into a corner, build only what's needed today
     * Strive to get it right the first time
@@ -188,7 +188,7 @@ Patterns for Schema Design
 1. Use enums for fields which can only take a specific set of values
 1. The API should provide business logic, not just data. Complex calculations should be performed on the server, rather than the client
 1. Use a payload that as a return type (updated object, as well as metadata about the related object)
-1. Mutatrions should provide user/business level errors via an 'errors' field on the mutation payload. 
+1. Mutations should provide user/business level errors via an 'errors' field on the mutation payload. 
 1. Most payload fields for a mutation should be nullable
 
 ---
