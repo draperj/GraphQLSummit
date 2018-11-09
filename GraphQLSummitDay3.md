@@ -67,4 +67,60 @@ ___
 * One graphl, distributed execution
     * Build your main schema from microservices with more focused and specific schemas
 
-### TODO: Can Apollo Gateway be facing externally with internally facing GraphQL microservices? iTerm2
+---
+### Apollo Client Caching in Depth
+___
+
+* No inherent caching for GraphQL due to calls being done via HTTP POST requests
+* Queries that are subsets of previous queries are very fast if already cached as data is already on the client
+* GraphQL client caching should cover what REST caching does, but more 
+* When mocking and working with client caching, more beneficial to have a static dataset than a dynamicly generated mock
+* Client cachings value is more about creating a local version of your graph, and building it out over transactions
+* Caching a graph locally can save on data duplication, for example by tracking if two objects reference the same sub object
+* GraphQL caching can replace redux in the sense that between caching and reduce API calls given from GraphQL, you can allow your data graph to be your "data store"
+*  Local cache is made up of flat data graph structures for specific queries (queries made for Dog A and Dog B would be cached seperately as flat data graph objects)
+* Caching on structure rather than syntax of query, cache grows with data set not the number of queries performed
+* apollo-cache-inmemory and apollo-cache-hermes (npm libraries)
+    * hermes may return extranious fields due to optimization on cache objects being returned via reference
+* Cacheing challenges: staleness, sameness (data duplication), creepiness (cached data being returned when it may be stale), worthwile-ness (is the cacheing of this data worth the extra cost)
+* Initial reads are same as network calls, future reads come from local cache
+
+___
+### GraphQL without GraphQL
+___
+* GraphQL Principles
+    * Hierarchical data
+    * Product-centric
+    * Strong Typing
+    * Client Specified queries
+    * Introspective 
+
+* RouteQL - library for just query portion of GraphQL
+* Apollo Link Rest
+
+---
+### Protect your GraphQL endpoint consumes from each other with Query Bounding
+---
+* AWS AppSync, provides enterprise security features: IAM, Cognito, OIDC, API keys
+* Offer offline first applications
+* React Native, Android, iOS, and Web clients
+* Security, Availability, Scalability 
+* Scaling 
+    * when using subscriptions is difficult
+    * execution cost directly porportional to query complexity 
+* Bounding can be done by 
+    * rate limiting (maybe use client/app key) 
+    * depth check for query, reject queries that ask for too many nested objects
+    * width check for query, rejects queries that ask for too many fields
+    * resolver check for query, rejects queries that call too many resolvers
+    * cost check for query, where fields are assigned a weight value that approximates to their computational cost, rejects queries that cost too much
+    * Rather than flat out rejecting the query, you could also remove subqueries
+    * Limit execution time (simple), can be done at the level of the query and resolvers
+* howtographql on how to do bounding
+* Multiple methods of bounding are required for scalable GraphQL APIs
+* Monitoring use cases and how endpoints are used
+
+* Read: semantics and complexity of GraphQL & when can we answer queries using result-bound data interfaces?
+* <medium.com/open-graphql>
+
+### TODO: Can Apollo Gateway be facing externally with internally facing GraphQL microservices? iTerm2, fakerql (fakerjs exposed via graphql)
